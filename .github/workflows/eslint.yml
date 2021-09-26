@@ -16,7 +16,7 @@ jobs:
       - name: Install Node.js
         env:
           NODE_VERSION: 14.17.6
-        run: nvm install $NODE_VERSION
+        run: nvm install NODE_VERSION
       - name: Install dependencies
         run: npm install
       - name: Lint source code eith ESLint
