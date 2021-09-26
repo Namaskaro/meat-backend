@@ -5,8 +5,8 @@ eslint:
   stage: lint
   variables:
     NODE_VERSION: 14.17.6
-    script:
-      - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-      - nvm install $NODE_VERSION
-      - npm install
-      - npm run lint
+  script:
+    - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+    - nvm install $NODE_VERSION
+    - npm install
+    - npm run lint
