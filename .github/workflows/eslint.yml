@@ -8,16 +8,19 @@ on:
 
 jobs:
   eslint:
-    runs-on: ubuntu-latest
+    runs-on: node:14.17.0-alpine
     steps:
       - uses: actions/checkout@v2
-      - name: install nvm
-        run: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-      - name: Install Node.js
-        env:
-          NODE_VERSION: 14.17.6
-        run: nvm install NODE_VERSION
       - name: Install dependencies
         run: npm install
       - name: Lint source code eith ESLint
         run: npm run lint
+
+  prettier:
+    runs-on: node:14.17.0-alpine
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Lint source code eith Prettier
+        run: npm run check:format
