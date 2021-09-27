@@ -13,7 +13,7 @@ stages:
 #     - npm run lint
 
 prettier:
-  image: 14.17.0-alpine
+  image: node:14.17.0-alpine
   stage: prettier
   script:
     - npm install
