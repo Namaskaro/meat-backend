@@ -7,7 +7,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "lint": "eslint .",
-    "check:format": "prettier --list-different ."
+    "check:format": "prettier ."
   },
   "author": "",
   "license": "ISC",
