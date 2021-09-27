@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const http = require('http');
 const cors = require('cors');
-const { routes } = require('./src/routes');
 const { join } = require('path');
+const { routes } = require('./src/routes');
 
 // настроим подключение к бд
 const mongoHost = process.env.MONGO_HOST;

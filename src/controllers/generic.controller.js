@@ -1,8 +1,8 @@
-const boom = require("boom");
+const boom = require('boom');
 
 const genericCrud = (model, {
   get = '',
-  getAll = ''
+  getAll = '',
 } = {}) => ({
   async get({ params: { id } }, res) {
     try {
@@ -42,7 +42,7 @@ const genericCrud = (model, {
   async delete({ params: { id } }, res) {
     try {
       await model.findByIdAndDelete(id);
-      return res.status(200).send({ status: "OK", message: "Продукт удален" });
+      return res.status(200).send({ status: 'OK', message: 'Продукт удален' });
     } catch (err) {
       return res.status(400).send(boom.boomify(err));
     }

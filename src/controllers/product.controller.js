@@ -2,14 +2,14 @@ const productRepository = require('./product.repository');
 
 exports.createProduct = async (req, res) => {
   try {
-    let payload = {
+    const payload = {
       title: req.body.title,
       description: req.body.description,
       price: req.body.price,
       amount: req.body.amount,
       imageUrl: req.body.imageUrl,
     };
-    let product = await productRepository.createProduct({
+    const product = await productRepository.createProduct({
       ...payload,
     });
     res.status(200).json({
@@ -27,7 +27,7 @@ exports.createProduct = async (req, res) => {
 
 exports.getProducts = async (req, res) => {
   try {
-    let products = await productRepository.products();
+    const products = await productRepository.products();
     res.status(200).json({
       status: true,
       data: products,
@@ -43,8 +43,8 @@ exports.getProducts = async (req, res) => {
 
 exports.getProductById = async (req, res) => {
   try {
-    let id = req.params.id;
-    let productDetails = await productRepository.productById(id);
+    const id = req.params.id;
+    const productDetails = await productRepository.productById(id);
     res.status(200).json({
       status: true,
       data: productDetails,
@@ -58,8 +58,8 @@ exports.getProductById = async (req, res) => {
 };
 exports.removeProduct = async (req, res) => {
   try {
-    let id = req.params.id;
-    let productDetails = await productRepository.removeProduct(id);
+    const id = req.params.id;
+    const productDetails = await productRepository.removeProduct(id);
     res.status(200).json({
       status: true,
       data: productDetails,

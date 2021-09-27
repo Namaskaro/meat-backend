@@ -31,5 +31,33 @@
   "devDependencies": {
     "eslint": "^7.32.0",
     "prettier": "2.4.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "rules": {
+      "max-len": "off",
+      "unused-vars": "off",
+      "no-unused-vars": "off",
+      "no-undef": "off",
+      "arrow-parens": "off",
+      "linebreak-style": "off",
+      "no-shadow": "off",
+      "import/prefer-default-export": "off",
+      "arrow-body-style": "off",
+      "no-unused-expressions": "off",
+      "no-return-assign": "off",
+      "prefer-destructuring": "off",
+      "no-console": "off",
+      "no-underscore-dangle": "off",
+      "no-plusplus": "off",
+      "object-curly-newline": "off",
+      "vue/no-unused-vars": "off",
+      "no-param-reassign": "off",
+      "consistent-return": "off",
+      "prefer-template": "off"
+    }
   }
 }

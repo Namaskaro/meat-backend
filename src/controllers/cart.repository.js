@@ -1,4 +1,5 @@
 const Cart = require('../model/Cart');
+
 exports.cart = async () => {
   const carts = await Cart.find().populate({
     path: 'items.productId',
