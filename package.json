@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check:format": "prettier --list-different ."
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +29,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "eslint": "^7.32.0"
+    "eslint": "^7.32.0",
+    "prettier": "2.4.1"
   }
 }
