@@ -4,62 +4,104 @@ const jwt = require('jsonwebtoken');
 const { Admin, Token } = require('../model');
 
 module.exports = {
-  //   async logout({ body: { refreshToken } }, res) {
-  //     const foundToken = await Token.findOne({ token: refreshToken });
+  async logout({ body: { refreshToken } }, res) {
+    const foundToken = await Token.findOne({ token: refreshToken });
 
-  //     if (!foundToken) {
-  //       return res.status(403).send({
-  //         message: 'Пользователь не авторизован',
-  //       });
-  //     }
+    if (!foundToken) {
+      return res.status(403).send({
+        message: 'Пользователь не авторизован',
+      });
+    }
 
-  //     await Token.findByIdAndDelete(foundToken._id);
+    await Token.findByIdAndDelete(foundToken._id);
 
-  //     return res.status(200).send({
-  //       message: 'Юзер успешно разлогинен',
-  //     });
-  //   },
-  //   async refreshToken({ body: { refreshToken } }, res) {
-  //     // Проверяем есть ли токен в запросе на сервер
-  //     if (!refreshToken) {
-  //       return res.status(403).send({
-  //         message: 'Действие запрещено',
-  //       });
-  //     }
-  //     // ищем токен в бд
-  //     const currentToken = await Token.findOne({ token: refreshToken });
+    return res.status(200).send({
+      message: 'Юзер успешно разлогинен',
+    });
+  },
+  async refreshToken({ body: { refreshToken } }, res) {
+    // Проверяем есть ли токен в запросе на сервер
+    if (!refreshToken) {
+      return res.status(403).send({
+        message: 'Действие запрещено',
+      });
+    }
+    // ищем токен в бд
+    const currentToken = await Token.findOne({ token: refreshToken });
 
-  //     // если не находим токен то возвращаем ошибку
-  //     if (!currentToken) {
-  //       return res.status(403).send({
-  //         message: 'Действие запрещено',
-  //       });
-  //     }
+    // если не находим токен то возвращаем ошибку
+    if (!currentToken) {
+      return res.status(403).send({
+        message: 'Действие запрещено',
+      });
+    }
 
-  //     jwt.verify(refreshToken, process.env.JWT_SECRET_REFRESH, (err, user) => {
-  //       if (err) {
-  //         return res.status(403).send({
-  //           message: 'Действие запрещено',
-  //         });
-  //       }
+    jwt.verify(refreshToken, process.env.JWT_SECRET_REFRESH, (err, admin) => {
+      if (err) {
+        return res.status(403).send({
+          message: 'Действие запрещено',
+        });
+      }
 
-  //       const accessToken = jwt.sign(
-  //         {
-  //           adminId: admin._id,
-  //           email: admin.email,
-  //         },
-  //         process.env.JWT_SECRET,
-  //         {
-  //           expiresIn: '1m',
-  //         },
-  //       );
+      const accessToken = jwt.sign(
+        {
+          adminId: admin._id,
+          email: admin.email,
+        },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: '1m',
+        },
+      );
 
-  //       return res.status(200).send({
-  //         accessToken,
-  //         email: user.email,
-  //       });
-  //     });
-  //   },
+      return res.status(200).send({
+        accessToken,
+        email: user.email,
+      });
+    });
+  },
+  async refreshToken({ body: { refreshToken } }, res) {
+    // Проверяем есть ли токен в запросе на сервер
+    if (!refreshToken) {
+      return res.status(403).send({
+        message: 'Действие запрещено',
+      });
+    }
+    // ищем токен в бд
+    const currentToken = await Token.findOne({ token: refreshToken });
+
+    // если не находим токен то возвращаем ошибку
+    if (!currentToken) {
+      return res.status(403).send({
+        message: 'Действие запрещено',
+      });
+    }
+
+    jwt.verify(refreshToken, process.env.JWT_SECRET_REFRESH, (err, admin) => {
+      if (err) {
+        return res.status(403).send({
+          message: 'Действие запрещено',
+        });
+      }
+
+      const accessToken = jwt.sign(
+        {
+          adminId: admin._id,
+          email: admin.email,
+        },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: '1m',
+        },
+      );
+
+      return res.status(200).send({
+        accessToken,
+        email: admin.email,
+      });
+    });
+  },
+
   async login({ body: { login, password } }, res) {
     try {
       const foundUser = await Admin.findOne({ login });

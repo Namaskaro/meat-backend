@@ -1,9 +1,10 @@
 const boom = require('boom');
 
-const genericCrud = (model, {
-  get = '',
-  getAll = '',
-} = {}) => ({
+const Order = require('../model/Order');
+
+const { createAdminConfirmationOrderEmail } = require('./mail.controller');
+
+const genericCrud = (model, { get = '', getAll = '' } = {}) => ({
   async get({ params: { id } }, res) {
     try {
       const item = await model.findById(id).populate(get);
@@ -21,7 +22,6 @@ const genericCrud = (model, {
     }
   },
   async create({ body }, res) {
-    // title: Contrlo
     try {
       const item = new model(body);
       const newItem = await item.save();

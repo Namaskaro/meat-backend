@@ -11,6 +11,10 @@ const schema = new Schema({
     type: String,
     default: '',
   },
+  composition: {
+    type: String,
+    default: '',
+  },
   description: {
     type: String,
     default: '',
@@ -19,13 +23,24 @@ const schema = new Schema({
     type: Number,
     default: '',
   },
-  amount: {
-    type: Number,
+  priceFor: {
+    type: String,
     default: '',
   },
   imageUrl: {
     type: String,
     default: '',
+  },
+  videoUrl: {
+    type: String,
+    default: '',
+  },
+  slug: {
+    type: String,
+  },
+  category: {
+    type: ObjectId,
+    ref: 'Category',
   },
 });
 

@@ -1,6 +1,13 @@
 stages:
   - prettier
+  - deploy
 
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - .npm/
 # eslint:
 #   stage: lint
 #   variables:
@@ -18,3 +25,7 @@ prettier:
   script:
     - npm install
     - npm run check:format
+
+deploy:
+  image: node:14.17.0-alpine
+  stage: deploy

@@ -6,43 +6,37 @@ const {
   },
 } = require('mongoose');
 
-const Cart = require('./Cart');
-
 const schema = new Schema({
-  address: {
+  h1: {
     type: String,
     default: '',
   },
-  fullname: {
+  title: {
     type: String,
     default: '',
   },
-  phone: {
+  description: {
     type: String,
     default: '',
   },
-  amount: {
-    type: Number,
-    default: 0,
-  },
-  comment: {
+  introtext: {
     type: String,
     default: '',
   },
-  paymentType: {
+  tag: {
     type: String,
     default: '',
   },
-  status: {
+  url: {
     type: String,
-    default: 'Pending',
   },
-  products: [
-    {
-      type: ObjectId,
-      ref: 'Cart.items',
-    },
-  ],
+  created_date: {
+    type: Date,
+    default: Date.now,
+  },
+  content: {
+    type: String,
+  },
 });
 
-module.exports = model('Order', schema);
+module.exports = model('Product', schema);
