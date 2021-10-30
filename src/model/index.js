@@ -6,6 +6,7 @@ const Admin = require('./Admin');
 const Token = require('./Token');
 const Category = require('./Category');
 const Item = require('./Item');
+const OrderItem = require('./OrderItem');
 
 module.exports = {
   Product,
@@ -16,4 +17,5 @@ module.exports = {
   Token,
   Category,
   Item,
+  OrderItem,
 };

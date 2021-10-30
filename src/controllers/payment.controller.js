@@ -11,15 +11,13 @@ const createPayment = async (
   res,
 ) => {
   try {
-    const productsIds = products.map(({ _id }) => _id);
-
     const prepareOrder = {
       fullname,
       address,
       phone,
       paymentType,
       comment,
-      products: productsIds,
+      products,
       amount,
     };
 

@@ -6,7 +6,7 @@ const {
   },
 } = require('mongoose');
 
-const Cart = require('./Cart');
+const OrderItem = require('./OrderItem');
 
 const schema = new Schema({
   address: {
@@ -28,6 +28,7 @@ const schema = new Schema({
   comment: {
     type: String,
     default: '',
+    required: false,
   },
   paymentType: {
     type: String,
@@ -39,8 +40,24 @@ const schema = new Schema({
   },
   products: [
     {
-      type: ObjectId,
-      ref: 'Cart.items',
+      productId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Product',
+      },
+      quantity: {
+        type: Number,
+      },
+      price: {
+        type: Number,
+        required: true,
+      },
+      title: {
+        type: String,
+      },
+      total: {
+        type: Number,
+        required: true,
+      },
     },
   ],
 });

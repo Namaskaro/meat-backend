@@ -39,9 +39,9 @@ const createAdminConfirmationOrderEmail = async (
       <ul>
         <li> Имя ${fullname}  </li>
         <li> Адрес ${address}  </li>
-        <li> Адрес ${phone}  </li>
+        <li> Телефон ${phone}  </li>
       </ul>
-      <div>${products[0].title}</div>
+      <div>${products}</div>
     `,
   });
   console.log(products);
